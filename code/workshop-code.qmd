@@ -15,11 +15,6 @@ library(tidyverse)
 library(here)
 library(lterdatasampler)
 # would be nice to have
-install.packages("performance")
-install.packages("broom")
-install.packages("flextable")
-install.packages("ggeffects")
-install.packages("car")
 library(performance) 
 library(broom) 
 library(flextable) # create tables that will render nicely
@@ -31,10 +26,6 @@ library(naniar)
 # Linear Models
 
 How does stem length predict stem dry mass?
-
-```{r}
-options(repos = list(CRAN="http://cran.rstudio.com/"))
-```
 
 ```{r filtering-data}
 maples_data <- hbr_maples %>% 
