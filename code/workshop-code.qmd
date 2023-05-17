@@ -73,3 +73,23 @@ turn off 2 x 2 grid
 ```{r turn-off-grid, results = FALSE}
 dev.off()
 ```
+
+# putting things together to communicate
+
+## model predictions
+
+```{r pulling-out-predictions}
+predictions <- ggpredict(maples_model, terms = "stem_length")
+View(predictions) # terms corresponds to whatever predictor was in model
+```
+
+plot predictions
+
+```{r plotting-predictions}
+plot_predictions <- ggplot(data = maples_data, aes(x = stem_length, y = stem_dry_mass))+
+  geom_point() + # first plot underlying data
+  # plotting model predictions from predictions object from ggeffects
+  geom_line(data = predictions, aes(x = x, y = predicted), color = "blue", linewidth = 1) +
+  geom_ribbon(data = predictions, aes(x = x, y = predicted, ymin = conf.low, ymax = conf.high), alpha = 0.2)
+plot_predictions
+```
